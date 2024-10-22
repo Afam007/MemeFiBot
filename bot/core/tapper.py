@@ -590,14 +590,14 @@ class Tapper:
                             continue
 
                         if turbo_boost_count > 0 and settings.APPLY_DAILY_TURBO is True:
-                            logger.info(f"{self.session_name} | Sleep <lw>5s</lw> before activating daily turbo boost")
-                            await asyncio.sleep(delay=5)
+                            logger.info(f"{self.session_name} | Sleep <lw>15s</lw> before activating daily turbo boost")
+                            await asyncio.sleep(delay=15)
 
                             status = await self.apply_boost(http_client=http_client, boost_type=FreeBoostType.TURBO)
                             if status is True:
                                 logger.success(f"{self.session_name} | Turbo boost applied")
 
-                                await asyncio.sleep(delay=1)
+                                await asyncio.sleep(delay=0.5)
 
                                 active_turbo = True
                                 turbo_time = time()
