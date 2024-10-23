@@ -590,14 +590,14 @@ class Tapper:
                             continue
 
                         if turbo_boost_count > 0 and settings.APPLY_DAILY_TURBO is True:
-                            logger.info(f"{self.session_name} | Sleep <lw>15s</lw> before activating daily turbo boost")
-                            await asyncio.sleep(delay=15)
+                            logger.info(f"{self.session_name} | Sleep <lw>20s</lw> before activating daily turbo boost")
+                            await asyncio.sleep(delay=20)
 
                             status = await self.apply_boost(http_client=http_client, boost_type=FreeBoostType.TURBO)
                             if status is True:
                                 logger.success(f"{self.session_name} | Turbo boost applied")
 
-                                await asyncio.sleep(delay=0.5)
+                                await asyncio.sleep(delay=1)
 
                                 active_turbo = True
                                 turbo_time = time()
@@ -712,7 +712,7 @@ class Tapper:
                     sleep_between_clicks = randint(a=settings.SLEEP_BETWEEN_TAP[0], b=settings.SLEEP_BETWEEN_TAP[1])
 
                     if active_turbo is True:
-                        sleep_between_clicks = 4
+                        sleep_between_clicks = 1
 
                     logger.info(f"Sleep {sleep_between_clicks}s")
                     await asyncio.sleep(delay=sleep_between_clicks)
